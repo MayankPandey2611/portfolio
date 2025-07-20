@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mayank Pandey | Full Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+</head>
+<style>
+
+     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background: #1a1a1a;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.8rem;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+      footer {
+      background: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+
+    a.project-link {
+      text-decoration: none;
+      color: #fff;
+      background: #007BFF;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 1rem;
+      transition: background 0.3s;
+    }
+
+    a.project-link:hover {
+      background: #0056b3;
+    }
+
+    .project-section {
+  padding: 4rem 2rem;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+.project-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.project-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.project-card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 280px;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-icon {
+  font-size: 2rem;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.project-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.btn-project {
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.btn-project:hover {
+  background-color: #0056b3;
+}
+/* Project Section Styling */
+
+
+   #projects {
+  background-color: #f5f5f5;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  font-weight: bold;
+  color: #222;
+}
+
+.project-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.project-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.project-card h3 {
+  margin: 15px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.project-card .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.project-card .btn:hover {
+  background-color: #0056b3;
+}
+
+</style>
+<body>
+     <header>
+    <h1>Mayank Pandey</h1>
+    <nav>
+      <a href="skills.html">Skills</a>
+      <a href="#services">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+<section id="projects">
+  <h2 class="section-title">My Projects</h2>
+  <div class="project-container">
+
+    <!-- Project 1 -->
+    <div class="project-card">
+      <img src="mayank.jpeg.jpg" alt="ToDo List App">
+      <h3>ToDo List App (React)</h3>
+      <a href="https://your-todo-app-link.com" target="_blank" class="btn">View Project</a>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <img src="images/blinkit.png" alt="Blinkit Clone">
+      <h3>Blinkit Clone</h3>
+      <a href="https://your-blinkit-clone-link.com" target="_blank" class="btn">View Project</a>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <img src="Screenshot 2025-07-20 115952.png" alt="YouTube Clone">
+      <h3>YouTube Clone (Django)</h3>
+      <a href="https://mayank2611.pythonanywhere.com" target="_blank" class="btn">View Project</a>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card">
+      <img src="Screenshot 2025-07-20 115204.png" alt="Hotel Booking Website">
+      <h3>Hotel Booking Website</h3>
+      <a href="https://hotelbooking-blush.vercel.app" target="_blank" class="btn">View Project</a>
+    </div>
+
+  </div>
+</section>
+
+ <footer style="background-color: #282c34; color: white; text-align: center; padding: 2rem 1rem; margin-top: 3rem;">
+    <p style="margin-bottom: 1rem;">Let's connect!</p>
+    <div style="font-size: 1.5rem; margin-bottom: 1rem;">
+      <a href="https://www.linkedin.com/in/mayank-pandey-789011343" target="_blank" style="color: white; margin: 0 1rem;"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/MayankPandey2611" target="_blank" style="color: white; margin: 0 1rem;"><i class="fab fa-github"></i></a>
+      <a href="mailto:mayankpandey.sirt@gmail.com" style="color: white; margin: 0 1rem;"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p style="font-size: 0.9rem;">&copy; 2025 Mayank Pandey. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

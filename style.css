@@ -1,0 +1,1051 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    /* overflow: hidden; */
+    background-color: black;
+}
+
+nav{
+    width: 100%;
+    height: 85px;
+    position: sticky;
+}
+
+.nav-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo{
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.logo span{
+    color: red;
+    text-shadow: 0 0 10px red;
+}
+
+
+.hamburg,
+.cancel{
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: white;
+    display: none;
+    font-size: clamp(2.5rem,0.5rem+5vw,3rem);
+}
+
+.nav-container .links{
+    display: flex;
+
+}
+
+.nav-container .links a{
+    position: relative;
+    font-size: 1.2rem;
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: 550;
+    transition: 0.3s linear;
+}
+
+.nav-container .links a::before{
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: red;
+    transition: 0.2s linear;
+}
+
+.nav-container .links a:hover::before{
+    width: 100%;
+}
+
+.nav-container .links a:hover{
+    color: red;
+}
+
+.dropdown{
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    transform: translateY(-500px);
+    width: 100%;
+    height: auto;
+    backdrop-filter: blur(4px) brightness(40%);
+    box-shadow: 0 0 20px black;
+    transition: 0.2s linear;
+    
+}
+
+.dropdown .links a{
+    display: flex;
+    color: white;
+    text-decoration: none;
+    justify-content: center;
+    padding: 15px 0;
+    align-items: center;
+    transition: 0.2s linear;
+
+}
+
+.dropdown .links a:hover{
+    background-color: red;
+}
+
+
+
+section{
+    width: 100%;
+    height: 90vh;
+
+}
+
+.main-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+
+}
+
+.main-container .image{
+    width: 500px;
+    height: 70vh;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 50px red;
+
+}
+
+.main-container .image img{
+    width: 100%;
+}
+
+.main-container .image:hover{
+    animation: animate 1.5s ease-in-out infinite;
+}
+
+
+@keyframes animate {
+    0%{
+        scale: 1;
+    }
+    50%{
+        scale: 1.05;
+    }
+    100%{
+        scale: 1;
+    }
+}
+
+.main-container .content{
+    color: white;
+    width: 40%;
+    min-height: 100px;
+}
+
+.content h1{
+    font-size: 30px;
+    color: antiquewhite;
+
+}
+
+.content h1 span{
+    color: red;
+    text-shadow: 0 0 10px red;
+}
+.content .typewriter{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.content .typewriter-text{
+    color: red;
+    text-shadow: 0 0 10px red;
+   
+
+}
+
+.content p{
+    font-size: clamp(0.4rem,0.2rem+9vw,1rem);
+    margin: 10px 0;
+}
+
+.social-links i{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    background-color:transparent;
+    border: 0.2rem solid red;
+    border-radius: 50%;
+    color: red;
+    margin: 0 15px;
+    font-size: 1.5rem;
+    transition: 0.2s linear;
+
+}
+
+.social-links i:hover{
+    scale: 1.3;
+    color: black;
+    background-color: red;
+    filter: drop-shadow(0 0 10px red);
+}
+
+.content button{
+    width: 50%;
+    height: 6vh;
+    margin: 30px;
+    background-color: red;
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 120%;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: 0.2s linear;
+
+}
+
+.content button:hover{
+    scale: 1.1;
+    color: red;
+    border: 2px solid red;
+    background-color: transparent;
+    font-weight: 700;
+    box-shadow: 0 0 40px red;
+}
+.content .btn a{
+    text-decoration: none;
+    color: white;
+}
+
+#check{
+    display: none;
+}
+
+@media(max-width:884px){
+    nav.logo{
+        position: absolute;
+        top: 16px;
+        left: 15px;
+        font-size: 1.5rem;
+
+    }
+
+    .main-container{
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .nav-container .links{
+        display: none;
+    }
+
+    .hamburg,
+    .cancel{
+        display: block;
+    }
+
+    .main-container .content{
+        width: 80%;
+
+    }
+
+    .social-links i{
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
+
+    .main-container .image{
+        z-index: -1;
+        width: 50%;
+        height: 60%;
+    }
+}
+
+
+@media(max-width:440px){
+    .main-container .image{
+        width: 50%;
+        height: 40%;
+    }
+
+    .main-container .content{
+        width: 80%;
+   }
+
+   .main-container button{
+    margin-top: 15px;
+
+   }
+}
+
+
+
+
+section{
+    width: 100%;
+    height: 90vh;
+
+}
+
+
+
+.heading h2{
+    color: white;
+    font-size: 30px;
+}
+.education-part{
+    width: 90%;
+    height: 60vh;
+    /* margin-left: 8%; */
+    border: 0px solid white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.education-part h2{
+    color: white;
+    font-size:40px;
+    margin-left: 10%;
+}
+
+.education-part1{
+    width: 100%;
+    height:60vh;
+    border: 0px solid white;
+    margin-left: 10%;
+    background-color: red;
+ 
+}
+
+.education-part1 h1{
+    color: white;
+
+}
+.education-part1 h4{
+    color: black;
+}
+
+.education-part1 h3 {
+    color: white;
+}
+
+.education-part1 p{
+    color: white;
+}
+
+.education-part1 span{
+    color:black;
+}
+
+.education-part1:hover{
+    transform: scale(1.1);
+    transition: all ease 1.3s ;
+}
+
+.education-part2{
+    width: 100%;
+    height:60vh;
+    border: 0px solid white;
+    margin-left: 8%;
+    background-color:  rgba(66, 64, 70, 0.938);
+ 
+}
+
+.education-part2 h1{
+    color: white;
+
+}
+.education-part2 h4{
+    color: red;
+}
+
+.education-part2 h3 {
+    color: white;
+}
+
+.education-part2 p{
+    color: white;
+}
+
+.education-part2 span{
+    color:red;
+}
+
+.education-part2:hover{
+    transform: scale(1.1);
+    transition: all ease 1.3s ;
+}
+
+.education-part3{
+    width: 100%;
+    height:60vh;
+    border: 0px solid white;
+    margin-left: 10%;
+    background-color: red;
+ 
+}
+
+.education-part3 h1{
+    color: white;
+
+}
+.education-part3 h4{
+    color: black;
+}
+
+.education-part3 h3 {
+    color: white;
+}
+
+.education-part3 p{
+    color: white;
+}
+
+.education-part3 span{
+    color:black;
+}
+.education-part3:hover{
+    transform: scale(1.1);
+    transition: all ease 1.3s ;
+}
+
+
+#skills-part{
+    width: 90%;
+    height: 90vh;
+      margin-left: 5%;
+     
+}
+
+.skills-part1{
+    width: 100%;
+    height: 40vh;
+  
+    border: 0px solid white;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+
+.skills-part3{
+    width: 100%;
+    height: 40vh;
+    border: 1px solid black;
+    background-color: rgb(42, 34, 34);
+    display: flex;
+    justify-content: center;
+    padding-top: 12%;
+}
+
+.skills-part3 h2{
+    color: red;
+    
+}
+.skills-part3 i{
+    color: whitesmoke;
+    font-size: 20px;
+
+}
+
+.skills-part3:hover{
+    transition: all ease 1.1s;
+    transform: scale(1.1);
+}
+
+.skills-part5{
+    width: 100%;
+    height: 40vh;
+    border: 1px solid black;
+    background-color: rgba(66, 64, 70, 0.938);
+    display: flex;
+    justify-content: center;
+    padding-top: 12%;
+}
+
+.skills-part5 h2{
+    color: white;
+    
+}
+.skills-part5 i{
+    color: red;
+    font-size: 20px;
+}
+
+.skills-part5:hover{
+    transition: all ease 1.1s;
+    transform: scale(1.1);
+}
+
+
+.skills-part6{
+    width: 100%;
+    height: 40vh;
+    border: 1px solid black;
+    background-color: rgb(42, 34, 34);
+    display: flex;
+    justify-content: center;
+    padding-top: 12%;
+}
+
+.skills-part6 h2{
+    color: red;
+    
+}
+.skills-part6 i{
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+.skills-part6:hover{
+    transition: all ease 1.1s;
+    transform: scale(1.1);
+}
+
+.skills-part7{
+    width: 100%;
+    height: 40vh;
+    border: 1px solid black;
+    background-color: rgba(66, 64, 70, 0.938);
+    display: flex;
+    justify-content: center;
+    padding-top: 12%;
+}
+
+.skills-part7 h2{
+    color: white;
+    
+}
+.skills-part7 i{
+    color: red;
+    font-size: 20px;
+}
+
+.skills-part7:hover{
+    transition: all ease 1.1s;
+    transform: scale(1.1);
+}
+
+
+.skills-part2{
+    width: 100%;
+    height: 40vh;
+  gap: 10px;
+    border: 0px solid white;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+
+.skills-part4{
+    width: 100%;
+    height: 40vh;
+    border: 1px solid black;
+    background-color: rgba(66, 64, 70, 0.938);
+    display: flex;
+    justify-content: center;
+    padding-top: 12%;
+}
+
+.skills-part4 h2{
+    color: white;
+    
+}
+.skills-part4 i{
+    color: red;
+    font-size:25px;
+}
+
+.skills-part4:hover{
+    transition: all ease 1.1s;
+    transform: scale(1.1);
+}
+
+.skills-part8{
+    width: 100%;
+    height: 40vh;
+    border: 1px solid black;
+    background-color:  rgb(42, 34, 34);
+    display: flex;
+    justify-content: center;
+    padding-top: 12%;
+}
+
+.skills-part8 h2{
+    color: red;
+    
+}
+.skills-part8 i{
+    color: whitesmoke;
+    font-size:25px;
+}
+
+.skills-part8:hover{
+    transition: all ease 1.1s;
+    transform: scale(1.1);
+}
+
+.skills-part9{
+    width: 100%;
+    height: 40vh;
+    border: 1px solid black;
+    background-color: rgba(66, 64, 70, 0.938);
+    display: flex;
+    justify-content: center;
+    padding-top: 12%;
+}
+
+.skills-part9 h2{
+    color: whitesmoke;
+    
+}
+.skills-part9 i{
+    color: red;
+    font-size:25px;
+}
+
+.skills-part9:hover{
+    transition: all ease 1.1s;
+    transform: scale(1.1);
+}
+
+.skills-part10{
+    width: 100%;
+    height: 40vh;
+    border: 1px solid black;
+    background-color:  rgb(42, 34, 34);
+    display: flex;
+    justify-content: center;
+    padding-top: 12%;
+}
+
+.skills-part10 h2{
+    color: red;
+    
+}
+.skills-part10 i{
+    color: whitesmoke;
+    font-size:25px;
+}
+
+.skills-part10:hover{
+    transition: all ease 1s;
+    transform: scale(1.1);
+}
+
+
+.experience-part{
+    width: 100%;
+    height: 120vh;
+    border: 0px solid white;
+  
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.experience-part1{
+  background-color: rgb(42, 34, 34) ;
+    width: 40%;
+    height:75vh;
+    border: 0px solid white;
+   
+}
+
+.experience-part2{
+   background-color: rgba(66, 64, 70, 0.938) ;
+    width: 40%;
+    height: 75vh;
+    border: 1px solid black;
+}
+
+
+.experience-part1 h4{
+    color: red;
+}
+
+.experience-part1 h1{
+    color: white;
+    font-size: 35px;
+}
+
+.experience-part1 h2{
+    color: red;
+    font-size: 23px;
+}
+.experience-part1 span{
+    color: whitesmoke;
+}
+
+.experience-part1 h3{
+    color: rgb(90, 86, 82);
+}
+
+.experience-part1 p{
+    color: whitesmoke;
+    font-size: 18px;
+}
+
+.experience-part1:hover{
+    transform: scale(1.1);
+    transition: all ease 2s;
+}
+
+
+.experience-part2 h4{
+    color: red;
+}
+
+.experience-part2 h1{
+    color: white;
+    font-size: 35px;
+}
+
+.experience-part2 h2{
+    color: red;
+    font-size: 23px;
+}
+.experience-part2 span{
+    color: whitesmoke;
+}
+
+.experience-part2 h3{
+    color: rgb(90, 86, 82);
+}
+
+.experience-part2 p{
+    color: whitesmoke;
+    font-size: 18px;
+}
+
+.experience-part2:hover{
+    transform: scale(1.1);
+    transition: all ease 2s;
+}
+
+
+
+
+
+
+
+
+section{
+    width: 100%;
+    height: 90vh;
+
+}
+
+.heading h1{
+    color:red;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    /* text-decoration: underline; */
+   
+}
+
+#check{
+    display:none;
+}
+
+.work-part h2{
+    color: white;
+    font-size:30px;
+    margin-left: 10%;
+}
+
+.service-part{
+    height:110vh;
+}
+.service-part h2{
+    color: white;
+    font-size:30px;
+    margin-left: 10%;
+}
+
+.work-part1{
+    width: 80%;
+    height: 70vh;
+    border: 1px solid white;
+    margin-left: 10%;
+ 
+}
+
+.service-part1{
+    width: 80%;
+    /* height: 70vh; */
+    margin-left: 10%;
+    display:inline-flex;
+    justify-content:space-around;
+    
+}
+
+ .service-part2{
+    width: 40%;
+    height: 30vh;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-left:  15px;
+    padding-top:  20px;
+    box-sizing: border-box;
+    background-color: red;
+    
+} 
+
+.service-part2:hover{
+    transition: all ease 1s ;
+    transform: scale(1.1);
+}
+.service-part2 h1:hover{
+    color: black;
+}
+.service-part2 i:hover{
+    color: black;
+}
+
+
+
+.service-part2 h1{
+    color: black;
+    font-size: 25px;
+}
+.service-part2 p{
+    color: white;
+    font-size: 16px;
+}
+
+.service-part2 i{
+    color: white;
+    font-size: 20px;
+}
+
+
+
+
+.service-part3{
+    width: 40%;
+    height: 29vh;
+   
+    padding-left:  15px;
+    padding-top:  20px;
+    box-sizing: border-box;
+    background-color: rgba(66, 64, 70, 0.938);
+    
+} 
+
+.service-part3:hover{
+    transition: all ease 1s ;
+    transform: scale(1.1);
+    
+}
+
+
+.service-part3 h1{
+    color: red;
+    font-size: 25px;
+}
+.service-part3 p{
+    color: white;
+    font-size: 16px;
+}
+
+.service-part3 i{
+    color: white;
+    font-size: 20px;
+}
+
+
+.s1{
+    width: 80%;
+    /* height: 70vh; */
+    margin-left: 10%;
+    display:inline-flex;
+    justify-content:space-around;
+    
+}
+
+.service-part4{
+    width: 40%;
+    height: 28vh;
+   
+    padding-left:  15px;
+    padding-top:  20px;
+    margin-top: 7px;
+    box-sizing: border-box;
+    background-color: rgba(66, 64, 70, 0.938);
+    
+} 
+
+.service-part4:hover{
+    transition: all ease 1s ;
+    transform: scale(1.1);
+  
+}
+
+
+.service-part4 h1{
+    color: red;
+    font-size: 25px;
+}
+.service-part4 p{
+    color: white;
+    font-size: 16px;
+}
+
+.service-part4 i{
+    color: white;
+    font-size: 20px;
+}
+
+
+
+.service-part5{
+    width: 40%;
+    height: 30vh;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-left:  15px;
+    padding-top:  20px;
+    box-sizing: border-box;
+    background-color: red;
+    
+} 
+
+.service-part5:hover{
+   transition: all ease 1s ;
+   transform: scale(1.1);
+}
+
+
+.service-part5 h1{
+    color: black;
+    font-size: 25px;
+}
+.service-part5 p{
+    color: white;
+    font-size: 16px;
+}
+
+.service-part5 i{
+    color: white;
+    font-size: 20px;
+}
+
+
+.s2{
+    width: 80%;
+    /* height: 70vh; */
+    
+    margin-left: 10%;
+    display:inline-flex;
+    justify-content:space-around;
+    
+}
+
+
+.service-part6{
+    float: right;
+    width: 40%;
+    height: 30vh;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-left:  15px;
+    padding-top:  20px;
+    box-sizing: border-box;
+    background-color: red;
+    
+} 
+
+.service-part6:hover{
+    transition: all ease 1s ;
+    transform: scale(1.1);
+}
+
+
+.service-part6 h1{
+    color: black;
+    font-size: 25px;
+}
+.service-part6 p{
+    color: white;
+    font-size: 16px;
+}
+
+.service-part6 i{
+    color: white;
+    font-size: 20px;
+}
+
+
+
+.service-part7{
+    width: 40%;
+    height: 29vh;
+   
+    padding-left:  15px;
+    padding-top:  20px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    background-color: rgba(66, 64, 70, 0.938);
+    
+} 
+
+.service-part7:hover{
+    transition: all ease 1s ;
+    transform: scale(1.1);
+   
+}
+
+
+.service-part7 h1{
+    color: red;
+    font-size: 25px;
+}
+.service-part7 p{
+    color: white;
+    font-size: 16px;
+}
+
+.service-part7 i{
+    color: white;
+    font-size: 20px;
+}
