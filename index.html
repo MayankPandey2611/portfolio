@@ -1,383 +1,411 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mayank Pandey | Full Stack Developer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>Mayank Pandey | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
     body {
-      background: #f4f4f4;
-      color: #333;
-    }
-    header {
-      background: #1a1a1a;
+      margin: 0;
+      background: #0f0f1c;
       color: white;
-      padding: 1rem 2rem;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .hero {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-    }
-    header h1 {
-      font-size: 1.8rem;
-    }
-    nav a {
-      color: white;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .container {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .section {
-      margin-bottom: 3rem;
-    }
-    .section h2 {
-      font-size: 2rem;
-      color: #0077b6;
-      margin-bottom: 1rem;
-    }
-    .intro {
+      justify-content: center;
+      height: 100vh;
+      background: url('grid-background.png') center/cover no-repeat;
       text-align: center;
-      padding: 4rem 1rem;
-      background: #0077b6;
-      color: white;
     }
-    .intro h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+
+    .hero h1 {
+      font-size: 5rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #4facfe, #f093fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px #4facfe;
     }
-    .skills-grid, .services-grid {
+
+    .hero h2 {
+      color: #4facfe;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .badges,
+    .buttons,
+    .emojis {
+      margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
-      gap: 2rem;
       justify-content: center;
+      gap: 15px;
     }
-    .skill, .service {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      text-align: center;
-      flex: 1 1 200px;
-    }
-    .skill i, .service i {
-      font-size: 40px;
-      margin-bottom: 0.5rem;
-      color: #0077b6;
-    }
-    .service p {
-      font-size: 0.9rem;
-    }
-    footer {
-      background: #1a1a1a;
+
+    .badge,
+    .button {
+      background: #1c1c2b;
+      padding: 10px 20px;
+      border-radius: 50px;
       color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 10px #444;
+    }
+
+    .badge:hover,
+    .button:hover {
+      background: #29293d;
+    }
+
+    section {
+      padding: 80px 20px;
       text-align: center;
-      padding: 1rem;
     }
 
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #4facfe, #f093fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px #4facfe;
+    }
 
-    a.project-link {
+    .footer {
+      background: #111;
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid #f093fb;
+    }
+
+    .footer a {
+      margin: 0 10px;
+      color: #f093fb;
       text-decoration: none;
-      color: #fff;
-      background: #007BFF;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: #1c1c2b;
+      border: none;
+      color: white;
+      border-radius: 8px;
+    }
+
+    .skill,
+    .service {
+      border: 1px solid #4facfe;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 12px #f093fb;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-weight: bold;
+      background: linear-gradient(90deg, #4facfe, #f093fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px #4facfe;
+    }
+
+    .project-card {
+      border: 1px solid #4facfe;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 12px #f093fb;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-weight: bold;
+
+      /* text-shadow: 0 0 30px #4facfe; */
+    }
+
+    .skill:hover,
+    .service:hover,
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #f093fb;
+    }
+
+    .skill i,
+    .service i,
+    .project-card i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #4facfe, #f093fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px #4facfe;
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .btn{
+ /* padding: 1rem; */
+      background: linear-gradient(45deg, #f093fb, #09f);
+      border: none;  
+       color: black;
+      font-weight: bold;
       padding: 0.5rem 1rem;
-      border-radius: 5px;
+      border-radius: 0.5rem; 
+      text-decoration: none;
       display: inline-block;
-      margin-top: 1rem;
-      transition: background 0.3s;
+      margin-top: 0.5rem;
+      font-weight: bold;  
+        width: 200px;
+        
+
     }
 
-    a.project-link:hover {
-      background: #0056b3;
+
+    .skills-grid,
+    .services-grid,
+    .project-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+
     }
 
-    .project-section {
-  padding: 4rem 2rem;
-  background: #f5f5f5;
-  text-align: center;
-}
+    /* === Contact Section === */
+    .contact-section {
+      /* background-color: #0a0a0a; */
+      padding: 4rem 8rem;
+      border-radius: 20px;
+      /* box-shadow: 0 0 20px #f093fb;   */
+      max-width: 800px;
+      margin: 0 auto;
 
-.project-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #222;
-}
+    }
 
-.project-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
+    .contact-section h2 {
+      color: #f093fb;
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px #f093fb;
+    }
 
-.project-card {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  width: 280px;
-  transition: transform 0.3s ease;
-}
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
 
-.project-card:hover {
-  transform: translateY(-5px);
-}
+    }
 
-.project-icon {
-  font-size: 2rem;
-  color: #007bff;
-  margin-bottom: 1rem;
-}
+    .contact-form input,
+    .contact-form textarea {
+      padding: 1rem;
+      /* border: 2px solid #f093fb; */
+      border-radius: 10px;
+      background-color: #121212;
+      color: #f093fb;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease-in-out;
+    }
 
-.project-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: #333;
-}
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      box-shadow: 0 0 10px #f093fb;
+      border-color: #f093fb;
+    }
 
-.btn-project {
-  text-decoration: none;
-  background-color: #007bff;
-  color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  display: inline-block;
-  transition: background 0.3s ease;
-}
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
 
-.btn-project:hover {
-  background-color: #0056b3;
-}
-/* Project Section Styling */
+    .contact-form button {
+      padding: 1rem;
+      background: linear-gradient(45deg, #f093fb, #09f);
+      border: none;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      width: 200px;
+      margin: 0 auto;
+    }
 
-
-   #projects {
-  background-color: #f5f5f5;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2.2rem;
-  margin-bottom: 40px;
-  font-weight: bold;
-  color: #222;
-}
-
-.project-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.project-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-10px);
-}
-
-.project-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.project-card h3 {
-  margin: 15px 0;
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.project-card .btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.project-card .btn:hover {
-  background-color: #0056b3;
-}
-
-
-/* Social Section */
-.social-contact {
-  padding: 2rem;
-  text-align: center;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  font-size: 1.8rem;
-  margin-bottom: 1.2rem;
-}
-
-.social-links a {
-  color: #333;
-  transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-  color: #007bff;
-}
-
-
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav {
-        margin-top: 1rem;
-      }
+    .contact-form button:hover {
+      background: linear-gradient(45deg, #00f6ff, #0ff);
+      box-shadow: 0 0 15px #0ff;
     }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Mayank Pandey</h1>
-    <nav>
-      <a href="skills.html">Skills</a>
-      <a href="services.html">Services</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <section class="intro">
-    <h1>Full Stack Developer & Programmer</h1>
-    <p>Proficient in C++, Python, HTML, CSS, JavaScript, Django, and React.js. Passionate about building responsive, scalable web applications.</p>
+<body>
+  <div class="hero" data-aos="fade-in">
+    <h1>Mayank Pandey</h1>
+    <h2>Web Developer</h2>
+    <p>Proficient in Frontend & Backend Development including React, Django, REST APIs, GitHub, Firebase, Bootstrap</p>
+    <p>Crafting digital experiences with C++, Python, HTML, CSS, JavaScript, React, Django</p>
+    <div class="badges">
+      <span class="badge">React</span>
+      <span class="badge">Django</span>
+      <span class="badge">C++</span>
+      <span class="badge">Python</span>
+      <span class="badge">JavaScript</span>
+    </div>
+    <div class="buttons">
+      <button class="button" action="#projects">View My Work</button>
+      <button class="button" action="#contact">Get in Touch</button>
+    </div>
+    <div class="emojis">
+      <span>💻</span><span>🐟</span><span>💼</span><span>🐦</span><span>🌟</span><span>🔥</span>
+    </div>
+  </div>
+
+
+
+  <section id="skills" class="section" data-aos="fade-up">
+    <h2>My Skills</h2>
+    <div class="skills-grid">
+      <div class="skill" data-aos="fade-right"><i class="devicon-c-plain"></i>
+        <h3>C</h3>
+      </div>
+      <div class="skill" data-aos="fade-left"><i class="devicon-cplusplus-plain"></i>
+        <h3>C++</h3>
+      </div>
+      <div class="skill" data-aos="fade-right"><i class="devicon-python-plain"></i>
+        <h3>Python</h3>
+      </div>
+      <div class="skill" data-aos="fade-left"><i class="devicon-html5-plain"></i>
+        <h3>HTML</h3>
+      </div>
+      <div class="skill" data-aos="fade-right"><i class="devicon-css3-plain"></i>
+        <h3>CSS</h3>
+      </div>
+      <div class="skill" data-aos="fade-left"><i class="devicon-javascript-plain"></i>
+        <h3>JavaScript</h3>
+      </div>
+      <div class="skill" data-aos="fade-right"><i class="devicon-react-original"></i>
+        <h3>React.js</h3>
+      </div>
+      <div class="skill" data-aos="fade-left"><i class="devicon-django-plain"></i>
+        <h3>Django</h3>
+      </div>
+    </div>
+  </section>
   </section>
 
-  <div class="container">
-    <section id="skills" class="section">
-      <h2>My Skills</h2>
-      <div class="skills-grid">
-        <div class="skill"><i class="devicon-c-plain"></i><h3>C</h3></div>
-        <div class="skill"><i class="devicon-cplusplus-plain"></i><h3>C++</h3></div>
-        <div class="skill"><i class="devicon-python-plain"></i><h3>Python</h3></div>
-        <div class="skill"><i class="devicon-html5-plain"></i><h3>HTML</h3></div>
-        <div class="skill"><i class="devicon-css3-plain"></i><h3>CSS</h3></div>
-        <div class="skill"><i class="devicon-javascript-plain"></i><h3>JavaScript</h3></div>
-        <div class="skill"><i class="devicon-react-original"></i><h3>React.js</h3></div>
-        <div class="skill"><i class="devicon-django-plain"></i><h3>Django</h3></div>
+  <section id="services" class="section" data-aos="fade-up">
+    <h2>Services</h2>
+    <div class="services-grid">
+      <div class="service" data-aos="fade-right">
+        <i class="fa-solid fa-code"></i>
+        <h3>Frontend Development</h3>
+        <p>Responsive UI with HTML, CSS, JavaScript, and React.js</p>
       </div>
-    </section>
-
-    <section id="services" class="section">
-      <h2>Services</h2>
-      <div class="services-grid">
-        <div class="service">
-          <i class="fa-solid fa-code"></i>
-          <h3>Frontend Development</h3>
-          <p>Responsive UI with HTML, CSS, JavaScript, and React.js</p>
-        </div>
-        <div class="service">
-          <i class="fa-solid fa-server"></i>
-          <h3>Backend Development</h3>
-          <p>Django-based REST APIs and full-stack web apps</p>
-        </div>
-        <div class="service">
-          <i class="fa-solid fa-database"></i>
-          <h3>Database Integration</h3>
-          <p>Experience with SQL and NoSQL systems</p>
-        </div>
-        <div class="service">
-          <i class="fa-solid fa-laptop-code"></i>
-          <h3>Programming</h3>
-          <p>Strong DSA foundation in C++ and Python</p>
-        </div>
+      <div class="service" data-aos="fade-left">
+        <i class="fa-solid fa-server"></i>
+        <h3>Backend Development</h3>
+        <p>Django-based REST APIs and full-stack web apps</p>
       </div>
-    </section>
+      <div class="service" data-aos="fade-right">
+        <i class="fa-solid fa-database"></i>
+        <h3>Database Integration</h3>
+        <p>Experience with SQL and NoSQL systems</p>
+      </div>
+      <div class="service" data-aos="fade-left">
+        <i class="fa-solid fa-laptop-code"></i>
+        <h3>Programming</h3>
+        <p>Strong DSA foundation in C++ and Python</p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <section id="projects" class="section" data-aos="fade-up">
+    <h2 class="section-title">My Projects</h2>
+    <div class="project-container">
+      <div class="project-card" data-aos="zoom-in">
+        <img src="Screenshot 2025-07-22 165357.png" alt="ToDo List App">
+        <h3>ToDo List App </h3>
+        <a href="https://todoapp-cyan-three.vercel.app/" target="_blank" class="btn">View Project</a>
+      </div>
+      <div class="project-card" data-aos="zoom-in">
+        <img src="" alt="Blinkit Clone">
+        <h3>Blinkit Clone</h3>
+        <a href="" target="_blank" class="btn">View Project</a>
+      </div>
+      <div class="project-card" data-aos="zoom-in">
+        <img src="Screenshot 2025-07-20 115952.png" alt="YouTube Clone">
+        <h3>YouTube Clone </h3>
+        <a href="https://mayank2611.pythonanywhere.com" target="_blank" class="btn">View Project</a>
+      </div>
+      <div class="project-card" data-aos="zoom-in">
+        <img src="Screenshot 2025-07-20 115204.png" alt="Hotel Booking Website">
+        <h3>Hotel Booking Website</h3>
+        <a href="https://hotelbooking-blush.vercel.app" target="_blank" class="btn">View Project</a>
+      </div>
+    </div>
+  </section>
   </div>
-
-<section id="projects">
-  <h2 class="section-title">My Projects</h2>
-  <div class="project-container">
-
-    <!-- Project 1 -->
-    <div class="project-card">
-      <img src="Screenshot 2025-07-22 165357.png" alt="ToDo List App">
-      <h3>ToDo List App (React)</h3>
-      <a href="https://todoapp-cyan-three.vercel.app/" target="_blank" class="btn">View Project</a>
-    </div>
-
-    <!-- Project 2 -->
-    <div class="project-card">
-      <img src="images/blinkit.png" alt="Blinkit Clone">
-      <h3>Blinkit Clone</h3>
-      <a href="https://your-blinkit-clone-link.com" target="_blank" class="btn">View Project</a>
-    </div>
-
-    <!-- Project 3 -->
-    <div class="project-card">
-      <img src="Screenshot 2025-07-20 115952.png" alt="YouTube Clone">
-      <h3>YouTube Clone (Django)</h3>
-      <a href="https://mayank2611.pythonanywhere.com" target="_blank" class="btn">View Project</a>
-    </div>
-
-    <!-- Project 4 -->
-    <div class="project-card">
-      <img src="Screenshot 2025-07-20 115204.png" alt="Hotel Booking Website">
-      <h3>Hotel Booking Website</h3>
-      <a href="https://hotelbooking-blush.vercel.app" target="_blank" class="btn">View Project</a>
-    </div>
-
-  </div>
-</section>
+  </section>
 
 
+  <section id="contact" class="contact-section" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <form class="contact-form" action="#" method="post">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
-<!-- Social Links + View More Button -->
-<!-- <section class="social-contact">
-  <div class="social-links">
-    <a href="https://github.com/MayankPandey2611"><i class="fa-brands fa-github"></i></a>
-    <a href="https://linkedin.com/in/mayank-pandey-789011343"><i class="fa-brands fa-linkedin"></i></a>
-    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-    <a href="https://instagram.com/mayankk_.2611"><i class="fa-brands fa-instagram"></i></a>
-  </div>
 
-</section> -->
-
-  <footer style="background-color: #282c34; color: white; text-align: center; padding: 2rem 1rem; margin-top: 3rem;">
+  <footer style="background-color: #282c34; color: white; text-align: center; padding: 2rem 1rem; margin-top: 3rem;"
+    data-aos="fade-up">
     <p style="margin-bottom: 1rem;">Let's connect!</p>
     <div style="font-size: 1.5rem; margin-bottom: 1rem;">
-      <a href="https://www.linkedin.com/in/mayank-pandey-789011343" target="_blank" style="color: white; margin: 0 1rem;"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/MayankPandey2611" target="_blank" style="color: white; margin: 0 1rem;"><i class="fab fa-github"></i></a>
-      <a href="mailto:mayankpandey.sirt@gmail.com" style="color: white; margin: 0 1rem;"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/mayank-pandey-789011343" target="_blank"
+        style="color: white; margin: 0 1rem;"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/MayankPandey2611" target="_blank" style="color: white; margin: 0 1rem;"><i
+          class="fab fa-github"></i></a>
+      <a href="mailto:mayankpandey.sirt@gmail.com" style="color: white; margin: 0 1rem;"><i
+          class="fas fa-envelope"></i></a>
     </div>
     <p style="font-size: 0.9rem;">&copy; 2025 Mayank Pandey. All rights reserved.</p>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 800
+    });
+  </script>
+
 </body>
+
 </html>
