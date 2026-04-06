@@ -1,465 +1,970 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mayank Pandey | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <title>Mayank Pandey — Full Stack Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
+    :root {
+      --bg: #0c0c0f;
+      --bg2: #13131a;
+      --bg3: #1a1a24;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(99,179,237,0.4);
+      --accent: #63b3ed;
+      --accent2: #9f7aea;
+      --text: #f0f0f5;
+      --muted: #8888aa;
+      --dim: #555570;
+      --card-bg: #13131a;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      background: #0f0f1c;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    .hero {
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 5%;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background: url('grid-background.png') center/cover no-repeat;
-      text-align: center;
+      background: rgba(12,12,15,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #0c0c0f !important;
+      padding: 7px 18px;
+      border-radius: 6px;
+      font-weight: 500 !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; color: #0c0c0f !important; }
+
+    .hamburger { display: none; cursor: pointer; color: var(--text); font-size: 1.4rem; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(99,179,237,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,179,237,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(99,179,237,0.07) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; max-width: 760px; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99,179,237,0.1);
+      border: 1px solid rgba(99,179,237,0.2);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 99px;
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
     }
 
     .hero h1 {
-      font-size: 5rem;
-      font-weight: bold;
-      background: linear-gradient(90deg, #4facfe, #f093fb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 30px #4facfe;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
     }
 
-    .hero h2 {
-      color: #4facfe;
-      font-size: 1.5rem;
+    .hero h1 .name-accent { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+
+    .hero-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .stack-pill {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
+      padding: 5px 14px;
+      border-radius: 6px;
+      font-weight: 400;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .stack-pill:hover { border-color: var(--border-hover); color: var(--accent); }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0c0c0f;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      padding: 11px 28px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.25); transform: translateY(-1px); }
+
+    /* ── SECTION BASICS ── */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
       margin-bottom: 10px;
     }
 
-    .badges,
-    .buttons,
-    .emojis {
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
     }
 
-    .badge,
-    .button {
-      background: #1c1c2b;
-      padding: 10px 20px;
-      border-radius: 50px;
-      color: white;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 0 10px #444;
+    .section-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 52px;
+      font-weight: 300;
     }
 
-    .badge:hover,
-    .button:hover {
-      background: #29293d;
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
     }
 
-    section {
-      padding: 80px 20px;
+    .about-text p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 18px;
+      font-weight: 300;
+    }
+
+    .about-text p strong { color: var(--text); font-weight: 500; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .stat-card:hover { border-color: var(--border-hover); }
+
+    .stat-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 6px;
+      font-weight: 400;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    .skill-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 16px;
       text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: default;
+    }
+    .skill-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
     }
 
-    section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      font-weight: bold;
-      background: linear-gradient(90deg, #4facfe, #f093fb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 30px #4facfe;
+    .skill-card i {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      display: block;
+      color: var(--accent);
     }
 
-    .footer {
-      background: #111;
-      padding: 30px;
-      text-align: center;
-      border-top: 1px solid #f093fb;
+    .skill-card .skill-name {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
     }
 
-    .footer a {
-      margin: 0 10px;
-      color: #f093fb;
-      text-decoration: none;
+    .skill-card .skill-level {
+      font-size: 0.7rem;
+      color: var(--dim);
+      margin-top: 4px;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      background: #1c1c2b;
-      border: none;
-      color: white;
-      border-radius: 8px;
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
     }
-
-    .skill,
-    .service {
-      border: 1px solid #4facfe;
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 12px #f093fb;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      font-weight: bold;
-      background: linear-gradient(90deg, #4facfe, #f093fb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 30px #4facfe;
-    }
-
 
     .project-card {
-      border: 1px solid #4facfe;
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 12px #f093fb;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      font-weight: bold;
-
-      /* text-shadow: 0 0 30px #4facfe; */
-    }
-
-    .skill:hover,
-    .service:hover,
-    .project-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #f093fb;
-    }
-
-    .skill i,
-    .service i,
-    .project-card i {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(90deg, #4facfe, #f093fb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 30px #4facfe;
-    }
-
-    .project-card img {
-      width: 100%;
-      border-radius: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .btn {
-
-      background: linear-gradient(45deg, #f093fb, #09f);
-      border: none;
-      color: black;
-      font-weight: bold;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 0.5rem;
-      font-weight: bold;
-      width: 200px;
-
-
-    }
-
-
-    .skills-grid,
-    .services-grid,
-    .project-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-
-    }
-
-    /* === Contact Section === */
-    .contact-section {
-      background-color: #0a0a0a;
-      padding: 4rem 8rem;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #f093fb;
-      max-width: 800px;
-      margin: 0 auto;
-
-    }
-
-    .contact-section h2 {
-      color: #f093fb;
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      text-shadow: 0 0 10px #f093fb;
-    }
-
-    .contact-form {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-
     }
+    .project-card:hover {
+      border-color: rgba(99,179,237,0.3);
+      transform: translateY(-4px);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 185px;
+      object-fit: cover;
+      display: block;
+      background: var(--bg3);
+    }
+
+    .project-img-placeholder {
+      width: 100%;
+      height: 185px;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dim);
+      font-size: 2rem;
+    }
+
+    .project-body {
+      padding: 20px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .project-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 14px;
+      font-weight: 300;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: rgba(99,179,237,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(99,179,237,0.15);
+    }
+
+    .project-links { display: flex; gap: 10px; }
+
+    .proj-btn {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 7px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .proj-btn:hover { opacity: 0.8; transform: translateY(-1px); }
+    .proj-btn-primary { background: var(--accent); color: #0c0c0f; }
+    .proj-btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .proj-btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+    /* ── CONTACT ── */
+    .contact-wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .contact-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .contact-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .contact-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+
+    .contact-icon {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: rgba(99,179,237,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .contact-card-label {
+      font-size: 0.7rem;
+      color: var(--dim);
+      font-weight: 400;
+    }
+    .contact-card-value {
+      font-size: 0.85rem;
+      color: var(--text);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
     .contact-form input,
     .contact-form textarea {
-      padding: 1rem;
-      /* border: 2px solid #f093fb; */
-      border-radius: 10px;
-      background-color: #121212;
-      color: #f093fb;
-      font-size: 1rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      padding: 12px 16px;
+      width: 100%;
       outline: none;
-      transition: all 0.3s ease-in-out;
+      transition: border-color 0.2s;
     }
-
     .contact-form input:focus,
-    .contact-form textarea:focus {
-      box-shadow: 0 0 10px #f093fb;
-      border-color: #f093fb;
-    }
+    .contact-form textarea:focus { border-color: rgba(99,179,237,0.5); }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--dim); }
+    .contact-form textarea { resize: vertical; min-height: 130px; }
 
-    .contact-form textarea {
-      resize: vertical;
-      min-height: 150px;
-    }
-
-    .contact-form button {
-      padding: 1rem;
-      background: linear-gradient(45deg, #f093fb, #09f);
+    .form-submit {
+      background: var(--accent);
+      color: #0c0c0f;
       border: none;
-      color: #000;
-      font-weight: bold;
-      font-size: 1.2rem;
-      border-radius: 10px;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 13px 28px;
       cursor: pointer;
-      transition: all 0.3s ease-in-out;
-      width: 200px;
-      margin: 0 auto;
+      align-self: flex-start;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .form-submit:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
-    .contact-form button:hover {
-      background: linear-gradient(45deg, #00f6ff, #0ff);
-      box-shadow: 0 0 15px #0ff;
+    footer p {
+      font-size: 0.82rem;
+      color: var(--dim);
     }
-    
+
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a {
+      color: var(--dim);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 5%;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.4rem; }
+      section { padding: 64px 5%; }
+      footer { flex-direction: column; text-align: center; }
+    }
   </style>
 </head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 <body>
-  <div class="hero" data-aos="fade-in">
-    <h1>Mayank Pandey</h1>
-    <h2>Full Stack Developer</h2>
-    <p>Proficient in Frontend & Backend Development including React, Django, REST APIs, GitHub
-      </br>
-      Crafting digital experiences with C++, Python, HTML, CSS, JavaScript, React, Django and SQL</p>
-    <div class="badges">
-      <span class="badge">React</span>
-      <span class="badge">Django</span>
-      <span class="badge">C++</span>
-      <span class="badge">Python</span>
-      <span class="badge">JavaScript</span>
-      <span class="badge">SQL</span>
-    </div>
-    <div class="buttons">
-      <button class="button"><a href="#projects" style="text-decoration: none ;color: red ;">View My Work</a></button>
-      <button class="button"><a href="#contact" style="text-decoration: none; color: red;">Get in Touch</a></button>
-      <button class="button"><a href="mayank_pandey_resume.pdf" style="text-decoration: none; color: red;">View Resume</a></button>
-    </div>
-    <div class="emojis">
-      <span>💻</span><span>🐟</span><span>💼</span><span>🐦</span><span>🌟</span><span>🔥</span>
-    </div>
-  </div>
 
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">mayank<span>.</span>dev</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact" class="nav-cta">Hire me</a></li>
+    </ul>
+    <div class="hamburger"><i class="fas fa-bars"></i></div>
+  </nav>
 
-
-  <section id="skills" class="section" data-aos="fade-up">
-    <h2>My Skills</h2>
-    <div class="skills-grid">
-     
-      <div class="skill" data-aos="fade-left"><i class="devicon-cplusplus-plain"></i>
-        <h3><a href="https://github.com/MayankPandey2611/DSA-using-Cplusplus" style="text-decoration: none;">C++</a></h3>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Open to work — Bhopal, India</div>
+      <h1>Hi, I'm <span class="name-accent">Mayank Pandey</span><br>Full Stack Developer</h1>
+      <p class="hero-sub">Final year CS student at SIRT Bhopal. I build full-stack web apps with Django, React, and SQL — from e-commerce platforms to AI-powered prediction tools.</p>
+      <div class="hero-stack">
+        <span class="stack-pill">Django</span>
+        <span class="stack-pill">React.js</span>
+        <span class="stack-pill">Python</span>
+        <span class="stack-pill">JavaScript</span>
+        <span class="stack-pill">SQL</span>
+        <span class="stack-pill">C++</span>
+        <span class="stack-pill">REST APIs</span>
       </div>
-      <div class="skill" data-aos="fade-right"><i class="devicon-python-plain"></i>
-        <h3><a href="https://github.com/MayankPandey2611/Python" style="text-decoration: none;">Python</a></h3>
-      </div>
-      <div class="skill" data-aos="fade-left"><i class="devicon-html5-plain"></i>
-        <h3><a href="https://github.com/MayankPandey2611/Practice-HTML-Codes" style="text-decoration: none;">HTML</a></h3>
-      </div>
-      <div class="skill" data-aos="fade-right"><i class="devicon-css3-plain"></i>
-        <h3><a href="https://github.com/MayankPandey2611/HTML-CSS-Projects" style="text-decoration: none;">CSS</a></h3>
-      </div>
-      <div class="skill" data-aos="fade-left"><i class="devicon-javascript-plain"></i>
-        <h3><a href="https://github.com/MayankPandey2611/JavaScript" style="text-decoration: none;">JavaScript</a></h3>
-      </div>
-      <div class="skill" data-aos="fade-right"><i class="devicon-react-original"></i>
-        <h3><a href="https://github.com/MayankPandey2611/React.js" style="text-decoration: none;">React.js</a></h3>
-      </div>
-      <div class="skill" data-aos="fade-left"><i class="devicon-django-plain"></i>
-        <h3><a href="https://github.com/MayankPandey2611" style="text-decoration: none;">Django</a></h3>
-      </div>
-       <div class="skill" data-aos="fade-right"><i class="fa-solid fa-database"></i>
-        <h3><a href="https://github.com/MayankPandey2611" style="text-decoration: none;">SQL</a></h3>
-      </div>
-    </div>
-  </section>
-  </section>
-
-  <section id="services" class="section" data-aos="fade-up">
-    <h2>Services</h2>
-    <div class="services-grid">
-      <div class="service" data-aos="fade-right">
-        <i class="fa-solid fa-code"></i>
-        <h3><a href="https://github.com/MayankPandey2611/React_Project" style="text-decoration: none;">Frontend Development</a></h3>
-        <p>Responsive UI with HTML, CSS, JavaScript, and React.js</p>
-      </div>
-      <div class="service" data-aos="fade-left">
-        <i class="fa-solid fa-server"></i>
-        <h3><a href="https://github.com/MayankPandey2611/django_project1" style="text-decoration: none;">Backend Development</a></h3>
-        <p>Django-based REST APIs and full-stack web apps</p>
-      </div>
-      <div class="service" data-aos="fade-right">
-        <i class="fa-solid fa-database"></i>
-        <h3>Database Integration</h3>
-        <p>Experience with SQL and NoSQL systems</p>
-      </div>
-      <div class="service" data-aos="fade-left">
-        <i class="fa-solid fa-laptop-code"></i>
-        <h3><a href="https://github.com/MayankPandey2611/DSA-using-Cplusplus" style="text-decoration: none;">Programming</a></h3>
-        <p>Strong DSA foundation in C++ and Python</p>
-     
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">
+          <i class="fas fa-folder-open" style="font-size:0.85rem"></i> View projects
+        </a>
+        <a href="Django_Developer.pdf" class="btn-outline" target="_blank">
+          <i class="fas fa-file-alt" style="font-size:0.85rem"></i> Resume
+        </a>
+        <a href="#contact" class="btn-outline">
+          <i class="fas fa-paper-plane" style="font-size:0.85rem"></i> Contact
+        </a>
       </div>
     </div>
   </section>
 
+  <hr class="section-divider">
 
-
-
-
-  <section id="projects" class="section" data-aos="fade-up">
-    <h2 class="section-title">My Projects</h2>
-    <div class="project-container">
-      <div class="project-card" data-aos="zoom-in">
-        <img src="Screenshot 2025-12-09 190220.png" alt="Online Chat App">
-        <h3>Online Chatting Application </h3>
-        <a href="https://github.com/MayankPandey2611/Chatting-Website" target="_blank" class="btn">View Project</a>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="fade-up">
+      <p class="section-label">About me</p>
+      <h2 class="section-title">Who I am</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>I'm a final year B.Tech Computer Science student at <strong>Sagar Institute of Research and Technology, Bhopal</strong>. I specialise in full-stack web development — building clean, functional products from database to UI.</p>
+        <p>My stack is <strong>Django + React + PostgreSQL/SQLite</strong>. I've shipped projects ranging from e-commerce platforms and booking systems to a machine learning-based heart disease predictor. I care about writing code that actually works in production, not just locally.</p>
+        <p>I have a strong foundation in <strong>Data Structures & Algorithms in C++</strong> and am actively improving my system design and deployment skills. Currently looking for my first full-time developer role.</p>
+        <div style="margin-top:24px; display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="https://leetcode.com/u/Mayank_pandey_2611/" target="_blank" class="btn-outline" style="font-size:0.82rem; padding:8px 18px;">
+            <i class="fas fa-code"></i> LeetCode
+          </a>
+          <a href="https://github.com/MayankPandey2611" target="_blank" class="btn-outline" style="font-size:0.82rem; padding:8px 18px;">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="https://linkedin.com/in/mayank-pandey-789011343" target="_blank" class="btn-outline" style="font-size:0.82rem; padding:8px 18px;">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
       </div>
-      <div class="project-card" data-aos="zoom-in">
-        <img src="Screenshot 2026-01-23 201622.png" alt="Modern Library System">
-        <h3>Modern Library System </h3>
-        <br>
-        <a href="https://book-borrow-system-6.onrender.com/" target="_blank" class="btn">View Project</a>
-      </div>
-
-      <div class="project-card" data-aos="zoom-in">
-        <img src="Screenshot 2026-02-02 124712.png" alt="E-commerce Application">
-        <h3>Shopping Hub</h3>
-        <br>
-        <a href="https://shopping-hub-4hdp.onrender.com/" target="_blank" class="btn">View Project</a>
-      </div>
-
-
-      <div class="project-card" data-aos="zoom-in">
-        <img src="Screenshot 2025-07-30 175752.png" alt="Blinkit Clone">
-        <h3>Grocery Application</h3>
-        <br>
-
-        <a href="https://github.com/MayankPandey2611/React_Project" target="_blank" class="btn">View Project</a>
-      </div>
-      <div class="project-card" data-aos="zoom-in">
-        <img src="Screenshot 2025-07-20 115952.png" alt="YouTube Clone">
-        <h3>YouTube Clone </h3>
-        <br>
-
-        <a href="https://mayank2611.pythonanywhere.com" target="_blank" class="btn">View Project</a>
-      </div>
-      <div class="project-card" data-aos="zoom-in">
-        <img src="Screenshot 2025-07-20 115204.png" alt="Hotel Booking Website">
-        <h3>Hotel Booking Website</h3>
-        <br>
-
-        <a href="https://hotelbooking-blush.vercel.app" target="_blank" class="btn">View Project</a>
-      </div>
-      <div class="project-card" data-aos="zoom-in">
-        <img src="Screenshot 2025-08-04 194346.png" alt="Heart Disease Prediction Application">
-        <h3>Heart Disease Prediction Application</h3>
-        <a href="https://heart-disease-prediction-app-et9s.onrender.com" target="_blank" class="btn">View Project</a>
-      </div>
-      <div class="project-card" data-aos="zoom-in">
-        <img src="Screenshot 2025-08-04 195500.png" alt="Weather App">
-        <h3>Weather App</h3>
-        <br>
-        <a href="https://weather-app-three-kappa-61.vercel.app" target="_blank" class="btn">View Project</a>
-      </div>
-
-
-      <div class="project-card" data-aos="zoom-in">
-        <img src="Screenshot 2025-07-22 165357.png" alt="ToDo List App">
-        <h3>ToDo List App </h3>
-        <br>
-        <a href="https://todoapp-cyan-three.vercel.app/" target="_blank" class="btn">View Project</a>
-      </div>
-
-
-         <div class="project-card" data-aos="zoom-in">
-        <img src="Screenshot 2026-01-30 191242.png" alt="ToDo List App">
-        <h3>Coffee Shop Application </h3>
-        <br>
-        <a href="https://coffeeshop-henna.vercel.app/" target="_blank" class="btn">View Project</a>
+      <div class="about-stats fade-up">
+        <div class="stat-card">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Projects built & deployed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2+</div>
+          <div class="stat-label">Years of coding experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Live production apps</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">DSA</div>
+          <div class="stat-label">Strong C++ & Python foundation</div>
+        </div>
       </div>
     </div>
   </section>
-  </div>
-  </section>
 
-  <section id="contact" class="contact-section" data-aos="fade-up">
-    <h2>Contact Me</h2>
-    <form class="contact-form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+  <hr class="section-divider">
 
-
-  <footer style="background-color: #282c34; color: white; text-align: center; padding: 2rem 1rem; margin-top: 3rem;"
-    data-aos="fade-up">
-    <p style="margin-bottom: 1rem;">Let's connect!</p>
-    <div style="font-size: 1.5rem; margin-bottom: 1rem;">
-      <a href="https://www.linkedin.com/in/mayank-pandey-789011343" target="_blank"
-        style="color: white; margin: 0 1rem;"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/MayankPandey2611" target="_blank" style="color: white; margin: 0 1rem;"><i
-          class="fab fa-github"></i></a>
-      <a href="mailto:mayankpandey.sirt@gmail.com" style="color: white; margin: 0 1rem;"><i
-          class="fas fa-envelope"></i></a>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="fade-up">
+      <p class="section-label">Technical skills</p>
+      <h2 class="section-title">What I work with</h2>
+      <p class="section-sub">Languages, frameworks, and tools I use to ship products.</p>
     </div>
-    <p style="font-size: 0.9rem;">&copy; 2025 Mayank Pandey. All rights reserved.</p>
+    <div class="skills-grid fade-up">
+      <div class="skill-card">
+        <i class="devicon-python-plain colored"></i>
+        <div class="skill-name">Python</div>
+        <div class="skill-level">Primary language</div>
+      </div>
+      <div class="skill-card">
+        <i class="devicon-django-plain"></i>
+        <div class="skill-name">Django</div>
+        <div class="skill-level">Backend & REST APIs</div>
+      </div>
+      <div class="skill-card">
+        <i class="devicon-react-original colored"></i>
+        <div class="skill-name">React.js</div>
+        <div class="skill-level">Frontend</div>
+      </div>
+      <div class="skill-card">
+        <i class="devicon-javascript-plain colored"></i>
+        <div class="skill-name">JavaScript</div>
+        <div class="skill-level">ES6+</div>
+      </div>
+      <div class="skill-card">
+        <i class="devicon-cplusplus-plain colored"></i>
+        <div class="skill-name">C++</div>
+        <div class="skill-level">DSA & algorithms</div>
+      </div>
+      <div class="skill-card">
+        <i class="devicon-html5-plain colored"></i>
+        <div class="skill-name">HTML5</div>
+        <div class="skill-level">Semantic markup</div>
+      </div>
+      <div class="skill-card">
+        <i class="devicon-css3-plain colored"></i>
+        <div class="skill-name">CSS3</div>
+        <div class="skill-level">Responsive design</div>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-database" style="color:var(--accent)"></i>
+        <div class="skill-name">SQL</div>
+        <div class="skill-level">PostgreSQL · SQLite</div>
+      </div>
+      <div class="skill-card">
+        <i class="devicon-git-plain colored"></i>
+        <div class="skill-name">Git</div>
+        <div class="skill-level">Version control</div>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-github" style="color:var(--text)"></i>
+        <div class="skill-name">GitHub</div>
+        <div class="skill-level">Collaboration</div>
+      </div>
+    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="fade-up">
+      <p class="section-label">Work</p>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">A mix of full-stack apps, ML projects, and frontend builds — all deployed and live.</p>
+    </div>
+    <div class="projects-grid fade-up">
+
+      <!-- E-commerce -->
+      <div class="project-card">
+        <img class="project-img" src="Screenshot 2026-02-02 124712.png" alt="Shopping Hub" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-img-placeholder" style="display:none"><i class="fas fa-shopping-cart"></i></div>
+        <div class="project-body">
+          <div class="project-name">Shopping Hub</div>
+          <p class="project-desc">Full-stack e-commerce platform with product listings, user authentication, shopping cart, and order management. Backend powered by Django REST Framework.</p>
+          <div class="project-tags">
+            <span class="tag">Django</span><span class="tag">React</span><span class="tag">REST API</span><span class="tag">SQLite</span>
+          </div>
+          <div class="project-links">
+            <a href="https://shopping-hub-4hdp.onrender.com/" target="_blank" class="proj-btn proj-btn-primary"><i class="fas fa-external-link-alt" style="font-size:0.7rem"></i> Live demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat App -->
+      <div class="project-card">
+        <img class="project-img" src="Screenshot 2025-12-09 190220.png" alt="Chat App" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-img-placeholder" style="display:none"><i class="fas fa-comments"></i></div>
+        <div class="project-body">
+          <div class="project-name">Online Chatting Application</div>
+          <p class="project-desc">Real-time chat application with room-based messaging. Built with Django Channels for WebSocket support, enabling live communication between users.</p>
+          <div class="project-tags">
+            <span class="tag">Django</span><span class="tag">WebSockets</span><span class="tag">Channels</span><span class="tag">JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://online-chat-application-3.onrender.com/" target="_blank" class="proj-btn proj-btn-primary"><i  class="fas fa-external-link-alt" style="font-size:0.7rem"></i> Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Heart Disease -->
+      <div class="project-card">
+        <img class="project-img" src="Screenshot 2025-08-04 194346.png" alt="Heart Disease Prediction" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-img-placeholder" style="display:none"><i class="fas fa-heartbeat"></i></div>
+        <div class="project-body">
+          <div class="project-name">Heart Disease Prediction App</div>
+          <p class="project-desc">ML-powered web app that predicts heart disease risk based on patient data. Trained a classification model in Python, served via a Django backend with a clean form UI.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">scikit-learn</span><span class="tag">ML</span>
+          </div>
+          <div class="project-links">
+            <a href="https://heart-disease-prediction-app-et9s.onrender.com" target="_blank" class="proj-btn proj-btn-primary"><i class="fas fa-external-link-alt" style="font-size:0.7rem"></i> Live demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Library System -->
+      <div class="project-card">
+        <img class="project-img" src="Screenshot 2026-01-23 201622.png" alt="Library System" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-img-placeholder" style="display:none"><i class="fas fa-book"></i></div>
+        <div class="project-body">
+          <div class="project-name">Modern Library System</div>
+          <p class="project-desc">Book borrowing and management system for libraries. Features user registration, book search, borrow/return tracking, and an admin dashboard to manage inventory.</p>
+          <div class="project-tags">
+            <span class="tag">Django</span><span class="tag">SQLite</span><span class="tag">Bootstrap</span><span class="tag">Admin</span>
+          </div>
+          <div class="project-links">
+            <a href="https://book-borrow-system-6.onrender.com/" target="_blank" class="proj-btn proj-btn-primary"><i class="fas fa-external-link-alt" style="font-size:0.7rem"></i> Live demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hotel Booking -->
+      <div class="project-card">
+        <img class="project-img" src="Screenshot 2025-07-20 115204.png" alt="Hotel Booking" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-img-placeholder" style="display:none"><i class="fas fa-hotel"></i></div>
+        <div class="project-body">
+          <div class="project-name">Hotel Booking Website</div>
+          <p class="project-desc">Frontend hotel booking interface with room listings, availability display, and a booking inquiry flow. Built with React and deployed on Vercel.</p>
+          <div class="project-tags">
+            <span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">CSS</span><span class="tag">Vercel</span>
+          </div>
+          <div class="project-links">
+            <a href="https://hotelbooking-blush.vercel.app" target="_blank" class="proj-btn proj-btn-primary"><i class="fas fa-external-link-alt" style="font-size:0.7rem"></i> Live demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coffee Shop -->
+      <div class="project-card">
+        <img class="project-img" src="Screenshot 2026-01-30 191242.png" alt="Coffee Shop" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-img-placeholder" style="display:none"><i class="fas fa-coffee"></i></div>
+        <div class="project-body">
+          <div class="project-name">Coffee Shop Application</div>
+          <p class="project-desc">Responsive café website with menu display, order form, and about section. Focuses on clean UI and smooth user experience across devices.</p>
+          <div class="project-tags">
+            <span class="tag">React</span><span class="tag">CSS</span><span class="tag">Vercel</span>
+          </div>
+          <div class="project-links">
+            <a href="https://coffeeshop-henna.vercel.app/" target="_blank" class="proj-btn proj-btn-primary"><i class="fas fa-external-link-alt" style="font-size:0.7rem"></i> Live demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grocery -->
+      <div class="project-card">
+        <img class="project-img" src="Screenshot 2025-07-30 175752.png" alt="Grocery App" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-img-placeholder" style="display:none"><i class="fas fa-shopping-basket"></i></div>
+        <div class="project-body">
+          <div class="project-name">Grocery Application (Blinkit Clone)</div>
+          <p class="project-desc">React-based grocery delivery UI inspired by Blinkit. Implements category filtering, product cards, and cart interaction using React state management.</p>
+          <div class="project-tags">
+            <span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">State management</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/MayankPandey2611/React_Project" target="_blank" class="proj-btn proj-btn-primary"><i class="fab fa-github" style="font-size:0.75rem"></i> Source code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weather -->
+      <div class="project-card">
+        <img class="project-img" src="Screenshot 2025-08-04 195500.png" alt="Weather App" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-img-placeholder" style="display:none"><i class="fas fa-cloud-sun"></i></div>
+        <div class="project-body">
+          <div class="project-name">Weather App</div>
+          <p class="project-desc">Live weather app using the OpenWeatherMap API. Fetches real-time temperature, humidity, and conditions for any city with a clean, minimal UI.</p>
+          <div class="project-tags">
+            <span class="tag">JavaScript</span><span class="tag">REST API</span><span class="tag">OpenWeatherMap</span>
+          </div>
+          <div class="project-links">
+            <a href="https://weather-app-three-kappa-61.vercel.app" target="_blank" class="proj-btn proj-btn-primary"><i class="fas fa-external-link-alt" style="font-size:0.7rem"></i> Live demo</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="fade-up" style="text-align:center; max-width:480px; margin:0 auto 48px;">
+      <p class="section-label">Get in touch</p>
+      <h2 class="section-title">Let's work together</h2>
+      <p class="section-sub" style="margin:0 auto;">I'm actively looking for developer roles. If you have a position or project in mind, I'd love to hear from you.</p>
+    </div>
+    <div class="contact-wrapper fade-up">
+      <div class="contact-links">
+        <a href="mailto:mayankpandey.sirt@gmail.com" class="contact-card">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-card-label">Email</div>
+            <div class="contact-card-value">Mayank Pandey</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/mayank-pandey-789011343" target="_blank" class="contact-card">
+          <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+          <div>
+            <div class="contact-card-label">LinkedIn</div>
+            <div class="contact-card-value">Mayank Pandey</div>
+          </div>
+        </a>
+        <a href="https://github.com/MayankPandey2611" target="_blank" class="contact-card">
+          <div class="contact-icon"><i class="fab fa-github"></i></div>
+          <div>
+            <div class="contact-card-label">GitHub</div>
+            <div class="contact-card-value">Mayank Pandey</div>
+          </div>
+        </a>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <input type="text" placeholder="Your name" required id="fname">
+          <input type="email" placeholder="Your email" required id="femail">
+        </div>
+        <input type="text" placeholder="Subject" id="fsubject">
+        <textarea placeholder="Your message..." required id="fmessage"></textarea>
+        <button type="submit" class="form-submit">
+          <i class="fas fa-paper-plane" style="font-size:0.8rem"></i> Send message
+        </button>
+        <p id="form-status" style="font-size:0.82rem; color:var(--accent); display:none; margin-top:4px;"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Mayank Pandey · Built with HTML, CSS & JavaScript</p>
+    <div class="footer-links">
+      <a href="https://github.com/MayankPandey2611" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/mayank-pandey-789011343" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:mayankpandey.sirt@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://leetcode.com/u/Mayank_pandey_2611/" target="_blank"><i class="fas fa-code"></i></a>
+    </div>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({
-      once: true,
-      duration: 800
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Contact form — mailto fallback
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('fname').value;
+      const email = document.getElementById('femail').value;
+      const subject = document.getElementById('fsubject').value || 'Portfolio inquiry';
+      const message = document.getElementById('fmessage').value;
+      const mailto = `mailto:mayankpandey.sirt@gmail.com?subject=${encodeURIComponent(subject + ' from ' + name)}&body=${encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\n\n' + message)}`;
+      window.location.href = mailto;
+      const status = document.getElementById('form-status');
+      status.style.display = 'block';
+      status.textContent = 'Opening your email client...';
+    });
+
+    // Mobile nav toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.style.display === 'flex';
+      navLinks.style.cssText = open
+        ? ''
+        : 'display:flex;flex-direction:column;position:absolute;top:65px;left:0;right:0;background:rgba(12,12,15,0.97);padding:20px 5%;gap:20px;border-bottom:1px solid rgba(255,255,255,0.07);z-index:99';
     });
   </script>
 
 </body>
-
 </html>
